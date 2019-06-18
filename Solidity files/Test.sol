@@ -1,14 +1,16 @@
 pragma solidity ^0.4.25;
 
 contract Test{
-    string greet = "Hello";
-    
-    function getGreet() view returns (string) {
+    string greet;
+
+    constructor() public {
+        greet = "hello";
+    }
+
+    function getGreet() public view returns (string) {
         return greet;
     }
-    
-    function setGreet(string _newGreet){
-        greet = _newGreet;    
+    function setGreet(string _newGreet) public {
+        greet = _newGreet;
     }
-    
 }
