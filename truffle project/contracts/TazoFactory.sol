@@ -16,9 +16,9 @@ contract TazoFactory is Ownable {
     struct Tazo {
         string name;
         uint dna;
-        uint32 level;
-        uint32 cooldown;
-        uint16 winCount;
+        uint level;
+        uint cooldown;
+        uint winCount;
     }
 
     Tazo[] public tazos;
@@ -26,11 +26,12 @@ contract TazoFactory is Ownable {
     mapping(uint => address) public tazoToOwner;        //mapeamento de tazo para dono
     mapping(address => uint) public ownerTazoCount;     //mapeamento de dono para quantidade de tazos
 
-    function _createTazo(string memory _name, uint _dna) internal {
+    function _createTazo(string memory _name, uint _dna) internal returns(uint){
         uint id = tazos.push(Tazo(_name, _dna, 1, uint32(now + cooldownTime), 0)) - 1;
         tazoToOwner[id] = msg.sender;
         ownerTazoCount[msg.sender] = ownerTazoCount[msg.sender].add(1);
         emit NewTazo(id, _name, _dna);
+        return id;
     }
 
     function _generateRandomDna(string memory _str) private view returns (uint) {
