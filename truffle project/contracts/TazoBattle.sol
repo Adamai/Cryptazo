@@ -25,35 +25,35 @@ contract TazoBattle is TazoHelper {
     uint battleVictoryProbability;
     uint levelGain;
     uint levelDifference = myTazo.level - enemyTazo.level;
-    if(levelDifference <= -8){
+    if(levelDifference <= uint(-8)){
         battleVictoryProbability = 7;
         levelGain = 12;
     }
-    else if(levelDifference <= -5 && levelDifference > -8){
+    else if(levelDifference <= uint(-5) && levelDifference > uint(-8)){
         battleVictoryProbability = 14;
         levelGain = 9;
     }
-    else if(levelDifference < 0 && levelDifference > -5){
+    else if(levelDifference < uint(0) && levelDifference > uint(-5)){
         battleVictoryProbability = 20;
         levelGain = 7;
     }
-    else if(0 < levelDifference && levelDifference < 5){
+    else if(uint(0) < levelDifference && levelDifference < uint(5)){
         battleVictoryProbability = 60;
-        levelGain = 4
+        levelGain = 4;
     }
-    else if(5 <= levelDifference && levelDifference < 8){
+    else if(uint(5) <= levelDifference && levelDifference < uint(8)){
         battleVictoryProbability = 70;
         levelGain = 3;
     }
-    else if(8 <= levelDifference && levelDifference < 10){
+    else if(uint(8) <= levelDifference && levelDifference < uint(10)){
         battleVictoryProbability = 80;
         levelGain = 2;
     }
-    else if(levelDifference >= 10){
+    else if(levelDifference >= uint(10)){
         battleVictoryProbability = 85;
         levelGain = 1;
     }
-    else if(levelDifference == 0){
+    else if(levelDifference == uint(0)){
         battleVictoryProbability = 50;
         levelGain = 4;
     }
