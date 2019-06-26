@@ -36,4 +36,14 @@ contract TazoHelper is TazoFuse {
     return result;
   }
 
+  function getTazos() external view returns(uint[] memory) {
+    uint[] memory result = new uint[](tazos.length);
+    uint counter = 0;
+    for (uint i = 0; i < tazos.length; i++) {
+        result[counter] = i;
+        counter++; 
+    }
+    return result;
+  }
+
 }
