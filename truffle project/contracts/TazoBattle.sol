@@ -6,7 +6,7 @@ contract TazoBattle is TazoHelper {
 
     uint randNonce = 0;
 
-    function getTazoPower(uint _tazoId) public returns(uint){
+    function getTazoPower(uint _tazoId) public view returns(uint){
         uint tazoDna = tazos[_tazoId].dna;
         uint basePower = tazoDna%10000;
         return ((basePower%5)+1) * tazos[_tazoId].level;
