@@ -4403,7 +4403,7 @@
     }
   },
   "schemaVersion": "3.0.11",
-  "updatedAt": "2019-06-26T22:37:35.424Z",
+  "updatedAt": "2019-06-29T19:08:41.002Z",
   "devdoc": {
     "methods": {
       "getApproved(uint256)": {

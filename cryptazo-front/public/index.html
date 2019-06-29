@@ -7,25 +7,24 @@
     <link rel="icon" href="<%= BASE_URL %>favicon.ico">
     <title>Cryptazo</title>
     <script language="javascript" type="text/javascript" src="web3.min.js"></script>
-    <!-- criar o arquivo cryptazo_abi.js que é um JSON para passar como variável cryptoTazoABI na função startApp() -->
     <script language="javascript" type="text/javascript" src="cryptazo_abi.js"></script>
   </head>
   <body>
       <!-- onde serão impressas as informações do tazo??? -->
-      <div id="txStatus"></div>
-      <div id="tazos"></div>
+      <!-- <div id="txStatus"></div>
+      <div id="tazos"></div> -->
       
     <script>
       
-      window.addEventListener('load', function() {
+
         var crypTazo;
 
         var userAccount;
 
         function startApp() {
           var cryptoTazoAddress = "0xA514F21Ec1e8d5Dc213790F72Fc3897E0bCebD5e";
-          // Passar cryptoTazoABI como variável
-          crypTazo = new web3js.eth.Contract(cryptoTazoABI, cryptoTazoAddress);
+         
+          crypTazo = new web3js.eth.Contract(crypTazoABI, cryptoTazoAddress);
 
           var accountInterval = setInterval(function() {
           
@@ -36,10 +35,10 @@
             .then(displayTazos);
           }
         }, 100);
-
+      }
        
         function displayTazos(ids) {
-        // Implementar essa função
+          
       }
 
       function createRandomTazo(name) {
@@ -84,22 +83,20 @@
           return crypTazo.methods.getTazosByOwner(owner).call()
         }
 
-        // Verificando se o Web3 foi injetado pelo navegador (Mist / MetaMask)
+        window.addEventListener('load', function() {
+
+       
         if (typeof web3 !== 'undefined') {
-          // Use Mist/MetaMask's provider
+        
           web3js = new Web3(web3.currentProvider);
         } else {
-          // Lidar com o caso em que o usuário não tem web3. Provavelmente
-          // mostre a eles uma mensagem dizendo-lhes para instalar o Metamask
-          // a fim de usar nosso aplicativo.
+         
         }
 
-        // Agora você pode iniciar seu aplicativo e acessar o web3js livremente:
         startApp()
 
       })
     </script>
     <div id="app"></div>
-    <!-- built files will be auto injected -->
   </body>
 </html>
