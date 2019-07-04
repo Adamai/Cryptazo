@@ -36,4 +36,8 @@ contract TazoOwnership is TazoBattle, ERC721 {
         emit Approval(msg.sender, _approved, _tokenId);
   }
 
+    function getContractBalance() public view onlyOwner returns(uint) {
+        return address(this).balance;
+    }
+
 }

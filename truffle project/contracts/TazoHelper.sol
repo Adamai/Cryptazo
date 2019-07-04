@@ -15,6 +15,10 @@ contract TazoHelper is TazoFuse {
         levelUpFee = _fee;
     }
 
+    function getLevelUpFee() external view returns(uint){
+      return levelUpFee;
+    }
+
     function levelUp(uint _tazoId) external payable {
         require(msg.value == levelUpFee, string(abi.encodePacked("O valor pago precisa ser igual a taxa de ", levelUpFee)));
         tazos[_tazoId].level = tazos[_tazoId].level.add(1);
@@ -55,7 +59,7 @@ contract TazoHelper is TazoFuse {
     return string(bstr);
   }
 
-  function getTazos() public view returns(string memory) {
+  /* function getTazos() public view returns(string memory) {
     uint[] memory result = new uint[](tazos.length);
     uint counter = 0;
     for (uint i = 0; i < tazos.length; i++) {
@@ -63,6 +67,6 @@ contract TazoHelper is TazoFuse {
         counter++;
     }
     return _uint2str(tazos.length);
-  }
+  } */
 
 }
