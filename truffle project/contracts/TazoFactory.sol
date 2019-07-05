@@ -19,6 +19,8 @@ contract TazoFactory is Ownable {
         uint level;
         uint cooldown;
         uint winCount;
+        bool forSale;
+        uint price;
     }
 
     Tazo[] public tazos;
@@ -27,7 +29,7 @@ contract TazoFactory is Ownable {
     mapping(address => uint) public ownerTazoCount;     //mapeamento de dono para quantidade de tazos
 
     function _createTazo(string memory _name, uint _dna) internal returns(uint){
-        uint id = tazos.push(Tazo(_name, _dna, 1, uint32(now + cooldownTime), 0)) - 1;
+        uint id = tazos.push(Tazo(_name, _dna, 1, uint32(now + cooldownTime), 0, false, 0)) - 1;
         tazoToOwner[id] = msg.sender;
         ownerTazoCount[msg.sender] = ownerTazoCount[msg.sender].add(1);
         emit NewTazo(id, _name, _dna);

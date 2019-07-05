@@ -173,6 +173,14 @@ var crypTazoABI = [
       {
         "name": "winCount",
         "type": "uint256"
+      },
+      {
+        "name": "forSale",
+        "type": "bool"
+      },
+      {
+        "name": "price",
+        "type": "uint256"
       }
     ],
     "payable": false,
@@ -589,6 +597,57 @@ var crypTazoABI = [
     ],
     "payable": false,
     "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "constant": false,
+    "inputs": [
+      {
+        "name": "_tazoId",
+        "type": "uint256"
+      },
+      {
+        "name": "_price",
+        "type": "uint256"
+      }
+    ],
+    "name": "putTazoForSale",
+    "outputs": [],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "constant": false,
+    "inputs": [
+      {
+        "name": "_tazoId",
+        "type": "uint256"
+      }
+    ],
+    "name": "cancelTazoSale",
+    "outputs": [],
+    "payable": false,
+    "stateMutability": "nonpayable",
+    "type": "function"
+  },
+  {
+    "constant": false,
+    "inputs": [
+      {
+        "name": "_tazoId",
+        "type": "uint256"
+      }
+    ],
+    "name": "purchaseTazo",
+    "outputs": [
+      {
+        "name": "",
+        "type": "bool"
+      }
+    ],
+    "payable": true,
+    "stateMutability": "payable",
     "type": "function"
   }
 ]

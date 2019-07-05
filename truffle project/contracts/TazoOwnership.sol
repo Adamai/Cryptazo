@@ -46,4 +46,31 @@ contract TazoOwnership is TazoBattle, ERC721 {
         return actualMoney;
     }
 
+    function putTazoForSale(uint _tazoId, uint _price) external onlyOwnerOf(_tazoId) {
+        require(_price > 0, 'Preço de venda do tazo deve ser maior que 0');
+        Tazo storage myTazo = tazos[_tazoId];
+        myTazo.forSale = true;
+        myTazo.price = _price;
+    }
+
+    function cancelTazoSale(uint _tazoId) external onlyOwnerOf(_tazoId) {
+        Tazo storage myTazo = tazos[_tazoId];
+        myTazo.forSale = false;
+        myTazo.price = 0;
+    }
+
+    function purchaseTazo(uint _tazoId) external payable returns(bool) {
+        Tazo storage tazo = tazos[_tazoId];
+        address _ogOwner = tazoToOwner[_tazoId];
+        require(tazo.price == msg.value && tazo.forSale, 'Valor pago precisa ser igual ao preço do tazo');
+        tazo.forSale = false;
+        tazo.price = 0;
+        emit Approval(_ogOwner, msg.sender, _tazoId);
+        ownerTazoCount[msg.sender] = ownerTazoCount[msg.sender].add(1);
+        ownerTazoCount[_ogOwner] = ownerTazoCount[_ogOwner].sub(1);
+        tazoToOwner[_tazoId] = msg.sender;
+        emit Transfer(_ogOwner, msg.sender, _tazoId);
+        return true;
+    }
+
 }
