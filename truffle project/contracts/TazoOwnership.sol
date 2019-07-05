@@ -40,4 +40,10 @@ contract TazoOwnership is TazoBattle, ERC721 {
         return address(this).balance;
     }
 
+    function transferEthToOwner() external onlyOwner returns(uint) {
+        uint actualMoney = address(this).balance;
+        msg.sender.transfer(address(this).balance);
+        return actualMoney;
+    }
+
 }
