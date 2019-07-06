@@ -6,7 +6,7 @@
     <meta name="viewport" content="width=device-width,initial-scale=1.0">
     <link rel="icon" href="<%= BASE_URL %>favicon.ico">
     <title>Cryptazo</title>
-    <script language="javascript" type="text/javascript" src="web3.min.js"></script>
+    <!----<script language="javascript" type="text/javascript" src="web3.min.js"></script> -->
     <script language="javascript" type="text/javascript" src="cryptazo_abi.js"></script>
   </head>
   <body>
@@ -16,13 +16,14 @@
       
     <script>
       
-
+        import Web3 from 'web3';
         var crypTazo;
 
         var userAccount;
 
         function startApp() {
-          var cryptoTazoAddress = "0xA514F21Ec1e8d5Dc213790F72Fc3897E0bCebD5e";
+          //alert("ENTROU AQUI");
+          var cryptoTazoAddress = "0xC6e07B342EBFe1C62E983c6E3eFb09204BE47795";
          
           crypTazo = new web3js.eth.Contract(crypTazoABI, cryptoTazoAddress);
 

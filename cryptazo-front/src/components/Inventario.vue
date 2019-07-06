@@ -5,13 +5,23 @@
 <script>
     require('./../../public/cryptazo_abi')
 
+    import Web3 from 'web3';
+    var $ = require('jQuery');
+
+    var web3js = require ('web3');
+
+    const web3 = new Web3('ws://localhost:7545');
+
     var cryptoZombies;
     var userAccount;
 
     function startApp() {
-        var cryptoZombiesAddress = "YOUR_CONTRACT_ADDRESS";
-        cryptoZombies = new web3js.eth.Contract(cryptazo_abi, cryptoZombiesAddress);
+        var cryptoZombiesAddress = "0xC6e07B342EBFe1C62E983c6E3eFb09204BE47795";
+        cryptoZombies = new web3js.eth.Contract(cryptazoABI, cryptoZombiesAddress);
 
+        alert("ENTROU AQUI");
+
+        
         var accountInterval = setInterval(function() {
             // Check if account has changed
             if (web3.eth.accounts[0] !== userAccount) {
@@ -21,6 +31,7 @@
                     .then(displayZombies);
             }
         }, 100);
+        
     }
 
     function displayZombies(ids) {
@@ -37,8 +48,6 @@
                 <li>DNA: ${zombie.dna}</li>
                 <li>Level: ${zombie.level}</li>
                 <li>Wins: ${zombie.winCount}</li>
-                <li>Losses: ${zombie.lossCount}</li>
-                <li>Ready Time: ${zombie.readyTime}</li>
               </ul>
             </div>`);
                 });
