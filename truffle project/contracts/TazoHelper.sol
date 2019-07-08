@@ -2,6 +2,7 @@ pragma solidity ^0.5.0;
 
 import "./TazoFuse.sol";
 import 'openzeppelin-solidity/contracts/ownership/Ownable.sol';
+//import 'github.com/OpenZeppelin/openzeppelin-solidity/contracts/ownership/Ownable.sol';
 
 contract TazoHelper is TazoFuse {
     uint levelUpFee = 0.0001 ether;

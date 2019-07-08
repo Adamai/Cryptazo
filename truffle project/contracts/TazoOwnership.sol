@@ -3,6 +3,8 @@ pragma solidity ^0.5.0;
 import "./TazoBattle.sol";
 import 'openzeppelin-solidity/contracts/token/ERC721/ERC721.sol';
 import 'openzeppelin-solidity/contracts/math/SafeMath.sol';
+//import 'github.com/OpenZeppelin/openzeppelin-solidity/contracts/math/SafeMath.sol';
+//import 'github.com/OpenZeppelin/openzeppelin-solidity/contracts/token/ERC721/ERC721.sol';
 
 contract TazoOwnership is TazoBattle, ERC721 {
 
