@@ -17,6 +17,9 @@
     <script>
       
         import Web3 from 'web3';
+        const ethereumJS = require('web3');
+        const web3js = new ethereumJS('http://127.0.0.1:7545', null, { transactionConfirmationBlocks: 1 });
+
         var crypTazo;
 
         var userAccount;

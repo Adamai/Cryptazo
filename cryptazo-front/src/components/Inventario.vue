@@ -3,21 +3,23 @@
 </template>
 
 <script>
-    require('./../../public/cryptazo_abi')
+    require('./../../public/cryptazo_abi.js');
+    import crypTazoABI from './../../public/cryptazo_abi.js'
 
     import Web3 from 'web3';
+    const ethereumJS = require('web3');
+    const web3 = new ethereumJS('http://127.0.0.1:7545', null, { transactionConfirmationBlocks: 1 });
+
     var $ = require('jQuery');
 
-    var web3js = require ('web3');
-
-    const web3 = new Web3('ws://localhost:7545');
-
+    var web3js = new ethereumJS('http://127.0.0.1:7545', null, { transactionConfirmationBlocks: 1 });
+    
     var cryptoZombies;
     var userAccount;
 
     function startApp() {
         var cryptoZombiesAddress = "0xC6e07B342EBFe1C62E983c6E3eFb09204BE47795";
-        cryptoZombies = new web3js.eth.Contract(cryptazoABI, cryptoZombiesAddress);
+        cryptoZombies = new web3js.eth.Contract(crypTazoABI, cryptoZombiesAddress);
 
         alert("ENTROU AQUI");
 
@@ -60,9 +62,9 @@
         return cryptoZombies.methods.tazos(id).call()
     }
 
-    function zombieToOwner(id) {
-        return cryptoZombies.methods.tazoToOwner(id).call()
-    }
+    //function zombieToOwner(id) {
+    //    return cryptoZombies.methods.tazoToOwner(id).call()
+    //}
 
     function getZombiesByOwner(owner) {
         return cryptoZombies.methods.getTazosByOwner(owner).call()
